@@ -1,0 +1,205 @@
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  font-family: spotify-circular, spotify-circular-cyrillic, spotify-circular-arabic, spotify-circular-hebrew, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+ul[class],
+ol[class], li {
+  list-style: none;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+article > * + * {
+  margin-top: 1em;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+.main {
+  width: 100%;
+  height: 100vh;
+  background: #282c34;
+}
+
+.container {
+  width: 1140px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 60px 0;
+  & .auth-block {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    top: -5%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  & .home-page-content {
+    width: 100%;
+    height: 100%;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & .liked-playlist {
+      margin-bottom: 40px;
+      min-height: 280px;
+      overflow: auto;
+      & h2 {
+        font-size: 28px;
+        margin-bottom: 15px;
+        color: #ffffff;
+      }
+      & .song-list {
+        & li {
+          margin-bottom: 10px;
+        }
+      }
+    }
+    & .random-track-block {
+      display: flex;
+      align-items: center;
+      & > div {
+        display: flex;
+        width: 80px;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255,255,255,.2);
+        transition: background .3s;
+        cursor: pointer;
+        &:hover {
+          background: rgba(255,255,255,.3);
+        }
+      }
+      & img {
+        width: 35px;
+        height: auto;
+      }
+    }
+    & .get-random-btn {
+      width: 220px;
+      font-size: 16px;
+      color: #ffffff;
+      text-align: center;
+      padding: 12px 0;
+      border-radius: 25px;
+      background-color: #c73e1d;
+      background-image: linear-gradient(315deg, #c73e1d 0%, #a23b72 37%, #2e86ab 100%);
+      cursor: pointer;
+      transition: box-shadow .3s;
+      margin-bottom: 25px;
+      &:hover {
+        box-shadow: 0 0 11px rgb(97 79 79);
+      }
+    }
+  }
+  & .sf-logo {
+    width: 45%;
+    position: relative;
+    margin-bottom: 50px;
+  }
+}
+
+.login-btn__green {
+  width: 250px;
+  display: block;
+  font-size: 24px;
+  padding: 8px 0;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  border-radius: 25px;
+  border: 2px solid #1db954;
+  cursor: pointer;
+  transition: .2s;
+  &:hover {
+    background: #1db954;
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
+  }
+}
+
+.lds-ring {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top: 50px;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
