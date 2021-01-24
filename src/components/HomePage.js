@@ -1,7 +1,6 @@
 import React, {Component, useEffect, useState} from "react"
 import { getUserPlayList, getSearch, getUserInfo, setTrack } from "../api"
 import SongList from "./SongList"
-import hash from "../hash"
 
 const HomePage = () => {
     const [playList, setPlayList] = useState([])
@@ -17,7 +16,7 @@ const HomePage = () => {
 
     const getRandomHandler = () => {
         const data = generateRandomQuery()
-        getSearch(hash.access_token, data).then(res => {
+        getSearch(data).then(res => {
             const trak = Math.floor(Math.random() * res.data.tracks.length)
             setRandomSong(res.data.tracks[trak].id)
             setLike(false)
@@ -25,13 +24,13 @@ const HomePage = () => {
     }
 
     const getPlayList = () => {
-        getUserPlayList(hash.access_token).then(res => {
+        getUserPlayList().then(res => {
             setPlayList(res.data.items)
         })
     }
 
     const likeTrackHandler = () => {
-        setTrack(hash.access_token, randomSong).then(res => {
+        setTrack(randomSong).then(res => {
             getPlayList()
             setLike(true)
         })
@@ -39,7 +38,7 @@ const HomePage = () => {
 
     useEffect(() => {
         getPlayList()
-        getUserInfo(hash.access_token).then(res => {
+        getUserInfo().then(res => {
             setUser(res.data)
         })
     },[])

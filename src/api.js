@@ -1,29 +1,25 @@
 import axios from "axios"
+import hash from "./hash"
 
-const baseUri = "https://api.spotify.com/v1"
 
-const defaultHeaders = (token) => {
-    return {
-        headers: {
-            Authorization: 'Bearer ' + token,
-            'Content-Type': 'application/json'
-        }
-    }
+// Axios default configs
+axios.defaults.baseURL = "https://api.spotify.com/v1"
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + hash.access_token
+axios.defaults.headers.common['Content-Type'] = 'application/json'
+
+
+export const getUserInfo = () => {
+    return axios.get("/me")
 }
 
-export const getUserInfo = (token) => {
-    return axios.get(baseUri + "/me", defaultHeaders(token))
+export const getUserPlayList = () => {
+    return axios.get("/me/tracks")
 }
 
-export const getUserPlayList = (token) => {
-    return axios.get(baseUri + "/me/tracks", defaultHeaders(token))
+export const getSearch = (data) => {
+    return axios.get("/recommendations" + data)
 }
 
-export const setTrack = (token, trackID) => {
-    return axios.put(baseUri + "/me/tracks?ids=" + trackID, {}, defaultHeaders(token))
+export const setTrack = (trackID) => {
+    return axios.put("/me/tracks?ids=" + trackID, {})
 }
-
-export const getSearch = (token, data) => {
-    return axios.get(baseUri + "/recommendations" + data, defaultHeaders(token))
-}
-
